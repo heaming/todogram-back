@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import {ulid} from "ulid";
 
-@Entity("Todo")
+@Entity("todo")
 export class Todo {
     @PrimaryColumn()
     id: string;

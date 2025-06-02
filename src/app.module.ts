@@ -26,12 +26,7 @@ import {UserModule} from "@/user/user.module";
           username: process.env.DB_USERNAME,
           password: process.env.DB_PASSWORD,
           database: process.env.DB_DATABASE,
-          entities: [
-              Todo,
-              Category,
-              User,
-              EmailVerification,
-          ],
+          entities: [__dirname + '/entities/*.entity.{ts,js}'],
           synchronize: true, // process.env.DB_DATABASE === 'development', // dev 환경에서는 true, prod에서는 false
           logging: true, // process.env.DB_DATABASE === 'development',
           namingStrategy: new SnakeNamingStrategy(),
