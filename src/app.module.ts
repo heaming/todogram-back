@@ -5,13 +5,11 @@ import {HttpModule} from "@nestjs/axios";
 import { ConfigModule } from '@nestjs/config';
 import {TypeOrmModule} from "@nestjs/typeorm";
 import {SnakeNamingStrategy} from "typeorm-naming-strategies";
-import {Todo} from "@/entities/todo.entity";
-import {Category} from "@/entities/category.entity";
-import {User} from "@/entities/user.entity";
-import {EmailVerification} from "@/entities/email-verification.entity";
 import {AuthModule} from "@/auth/auth.module";
 import {TodogramJwtModule} from "@/jwt/jwt.module";
 import {UserModule} from "@/user/user.module";
+import {TodoModule} from "@/todo/todo.module";
+import {CategoryModule} from "@/category/category.module";
 
 @Module({
   imports: [
@@ -36,6 +34,8 @@ import {UserModule} from "@/user/user.module";
       AuthModule,
       TodogramJwtModule,
       UserModule,
+      TodoModule,
+      CategoryModule
   ],
   controllers: [AppController],
   providers: [AppService],

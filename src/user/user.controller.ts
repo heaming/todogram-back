@@ -8,47 +8,47 @@ import {CurrentUser} from "@/decorator/current-user.decorator";
 export class UserController {
     constructor(private readonly userService: UserService) {}
 
-    @Post('/register')
+    @Post('register')
     register(
         @Body() request: CreateUserDto,
     ) {
         return this.userService.register(request.userId, request.password, request.username, request.authCode);
     }
 
-    @Post('/login')
+    @Post('login')
     login(@Body() request: {userId: string, password: string}) {
         return this.userService.login(request.userId, request.password);
     }
 
-    @Get('/me')
+    @Get('me')
     @UseGuards(JwtAuthGuard)
     getMe(@CurrentUser() user: { userId: string }) {
         return this.userService.getUserByUserId(user.userId);
     }
 
-    @Get('/detail')
+    @Get('detail')
     getUserDetail(@Query('userId') userId: string) {
         return this.userService.getUserByUserId(userId);
     }
 
-    @Post('/password')
+    @Post('password')
     @UseGuards(JwtAuthGuard)
     checkPassword(@CurrentUser() user: { userId: string },
                   @Body() request: {password: string}) {
         return this.userService.checkPassword(user.userId, request.password);
     }
 
-    @Put('/password')
+    @Put('password')
     @UseGuards(JwtAuthGuard)
     updatePassword(@CurrentUser() user: { userId: string },
                   @Body() request: { password: string }) {
         return this.userService.updateUserPassword(user.userId, request.password);
     }
 
-    @Put('/username')
+    @Put('username')
     @UseGuards(JwtAuthGuard)
     updateUsername(@CurrentUser() user: { userId: string },
-                  @Body() request: { username: string }) {
+                   @Body() request: { username: string }) {
         return this.userService.updateUsername(user.userId, request.username);
     }
 }

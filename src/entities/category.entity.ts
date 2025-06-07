@@ -15,7 +15,7 @@ export class Category {
     id: string;
 
     @Column()
-    user_id: string;
+    userId: string;
 
     @Column()
     sort: string;
@@ -27,13 +27,13 @@ export class Category {
     color: string;
 
     @CreateDateColumn({ type: "datetime" })
-    created_at: Date;
+    createdAt: Date;
 
     @DeleteDateColumn({ nullable: true })
-    deleted_at: Date;
+    deletedAt: Date;
 
     @UpdateDateColumn({ nullable: true })
-    updated_at: Date;
+    updatedAt: Date;
 
     @BeforeInsert()
     generateId() {
