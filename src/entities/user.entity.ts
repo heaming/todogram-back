@@ -10,7 +10,7 @@ import {
 } from "typeorm";
 import {ulid} from "ulid";
 
-@Entity("toodogram_user")
+@Entity("todogram_user")
 export class User {
     @PrimaryColumn()
     id: string;
@@ -32,6 +32,9 @@ export class User {
 
     @Column({default: true, nullable: true})
     emailVerified: boolean;
+
+    @Column({ nullable: true, default: 'FREE' })
+    membershipPlan: 'FREE' | 'MONTHLY' | 'YEARLY';
 
     @CreateDateColumn({ type: "datetime" })
     createdAt: Date;

@@ -9,13 +9,13 @@ import {
 } from "typeorm";
 import {ulid} from "ulid";
 
-@Entity("Todo")
+@Entity("todo")
 export class Todo {
     @PrimaryColumn()
     id: string;
 
     @Column()
-    user_id: string;
+    userId: string;
 
     @Column()
     sort: string;
@@ -30,22 +30,22 @@ export class Todo {
     date: string;
 
     @Column({ nullable: true })
-    time_at: string;
+    timeAt: string;
 
     @Column({ nullable: true })
-    time_ampm: string;
+    timeAmpm: string;
 
     @Column()
-    category_id: string;
+    categoryId: string;
 
     @CreateDateColumn()
-    created_at: Date;
+    createdAt: Date;
 
     @DeleteDateColumn({ nullable: true })
-    deleted_at: Date;
+    deletedAt: Date;
 
     @UpdateDateColumn({ nullable: true })
-    updated_at: Date;
+    updatedAt: Date;
 
     @BeforeInsert()
     generateId() {
