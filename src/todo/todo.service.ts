@@ -151,7 +151,7 @@ export class TodoService {
                 FROM todo
                 WHERE deleted_at is null
                 AND (status = 1 OR status = true)
-                AND date like ?||'%'
+                AND date LIKE CONCAT(?, '%')
                 AND user_id = ?
                 GROUP BY date
             )
@@ -160,7 +160,7 @@ export class TodoService {
                     , count(*) as count
                 FROM todo
                 WHERE deleted_at is null
-                  AND date like ?||'%'
+                  AND date LIKE CONCAT(?, '%')
                   AND user_id = ?
                 GROUP BY date
             ) 
