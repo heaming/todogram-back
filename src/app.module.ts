@@ -10,6 +10,7 @@ import {TodogramJwtModule} from "@/jwt/jwt.module";
 import {UserModule} from "@/user/user.module";
 import {TodoModule} from "@/todo/todo.module";
 import {CategoryModule} from "@/category/category.module";
+import {FriendModule} from "@/friend/friend.module";
 
 @Module({
   imports: [
@@ -35,7 +36,8 @@ import {CategoryModule} from "@/category/category.module";
       TodogramJwtModule,
       UserModule,
       TodoModule,
-      CategoryModule
+      CategoryModule,
+      FriendModule,
   ],
   controllers: [AppController],
   providers: [AppService],

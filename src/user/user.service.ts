@@ -4,7 +4,6 @@ import {User} from "@/entities/user.entity";
 import {Repository} from "typeorm";
 import * as bcrypt from 'bcrypt';
 import {TodogramJwtService} from "@/jwt/jwt.service";
-import {CategoryService} from "@/category/category.service";
 
 @Injectable()
 export class UserService {
@@ -44,7 +43,11 @@ export class UserService {
                 throw new HttpException('잘못된 비밀번호입니다.', HttpStatus.BAD_REQUEST);
             }
 
-            const accessToken = this.jwtService.sign({ id: user.id, userId, membership: user.membershipPlan });
+            const accessToken = this.jwtService.sign({
+                id: user.id,
+                userId: userId,
+                membership: user.membershipPlan
+            });
             return { accessToken: accessToken };
 
         } catch (err) {
