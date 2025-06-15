@@ -12,7 +12,7 @@ import {ulid} from "ulid";
 
 @Entity("todogram_user")
 export class User {
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: string;
 
     @Column({ unique: true })
@@ -44,11 +44,4 @@ export class User {
 
     @UpdateDateColumn({ nullable: true })
     updatedAt: Date;
-
-    @BeforeInsert()
-    generateId() {
-        if (!this.id) {
-            this.id = ulid();
-        }
-    }
 }

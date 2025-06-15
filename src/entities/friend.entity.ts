@@ -9,8 +9,8 @@ import {
 } from "typeorm";
 import {ulid} from "ulid";
 
-@Entity("category")
-export class Category {
+@Entity("friend")
+export class Friend {
     @PrimaryGeneratedColumn()
     id: string;
 
@@ -18,27 +18,11 @@ export class Category {
     userId: string;
 
     @Column()
-    sort: string;
-
-    @Column()
-    content: string;
-
-    @Column({nullable: true})
-    color: string;
+    friendId: string;
 
     @CreateDateColumn({ type: "datetime" })
     createdAt: Date;
 
     @DeleteDateColumn({ nullable: true })
     deletedAt: Date;
-
-    @UpdateDateColumn({ nullable: true })
-    updatedAt: Date;
-
-    // @BeforeInsert()
-    // generateId() {
-    //     if (!this.id) {
-    //         this.id = ulid();
-    //     }
-    // }
 }
